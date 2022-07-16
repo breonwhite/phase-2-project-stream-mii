@@ -12,14 +12,11 @@ const App = () => {
   const [ shows, setShows ] = useState([]);
 
   useEffect(() => {
-    
     const fetchSavedShows = () => {fetch(baseUrl + '/shows')
     .then(response => response.json())
     .then(data => setShows(data))
     }
-
     fetchSavedShows();
-
   }, [])
   
   
