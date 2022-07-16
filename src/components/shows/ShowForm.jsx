@@ -2,11 +2,13 @@ import React from 'react'
 import { useState } from 'react'
 import ShowCard from './ShowCard';
 
-const ShowForm = ({ saveShow }) => {
+const ShowForm = ({ saveShow, unsaveShow }) => {
     const [ show, setShow ] = useState('');
     const [ platform, setPlatform ] = useState('');
     const [ outputs, setOutput ] = useState([]);
 
+    
+    
     async function fetchShows() {
         const customURL = ('https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=' 
         + platform + '&type=series&keyword=' + show
@@ -44,7 +46,7 @@ const ShowForm = ({ saveShow }) => {
                     "overview": result.overview,
                     "streaming": platform,
                     "rating": result.tmdbRating,
-                    "video": result.video
+                    "video": result.video,
                 }
                 return showObj;
             })
@@ -76,7 +78,7 @@ const ShowForm = ({ saveShow }) => {
             <ul>
                 { outputs.map((output, index) => {
                     return (
-                            <ShowCard show={output} key={index} saveShow={saveShow}/>
+                            <ShowCard show={output} key={index} saveShow={saveShow} unsaveShow={unsaveShow} />
                     )
                 })}
             </ul>
