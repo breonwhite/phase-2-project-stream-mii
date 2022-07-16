@@ -1,8 +1,16 @@
 import React from 'react'
 
-const ShowCard = () => {
+const ShowCard = ({ show, index, saveShow }) => {
+  const handleSave = () => {
+    saveShow(show)
+  }
+    
   return (
-    <div>ShowCard</div>
+    <li key={index}>
+        { show.title }
+        { show.runtime }
+        <button onClick={ handleSave }>Add Show</button>
+    </li>
   )
 }
 

@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
+import ShowCard from './ShowCard';
 
-const ShowForm = () => {
+const ShowForm = ({ saveShow }) => {
     const [ show, setShow ] = useState('');
     const [ platform, setPlatform ] = useState('');
-    const [ searchResult, setSearchResults ] = useState({});
+    const [ outputs, setOutput ] = useState([]);
 
     async function fetchShows() {
         const customURL = ('https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=' 
@@ -47,7 +48,7 @@ const ShowForm = () => {
                 }
                 return showObj;
             })
-            setSearchResults(returnedShows)
+            setOutput(returnedShows)
         })
     }
   
@@ -71,8 +72,21 @@ const ShowForm = () => {
             
             <input type="button" value="Search Your Favorite Show" onClick={handleSearch} />
         </form>
+        <div>
+            <ul>
+                { outputs.map((output, index) => {
+                    return (
+                            <ShowCard show={output} key={index} saveShow={saveShow}/>
+                    )
+                })}
+            </ul>
+        </div>
     </div>
   )
 }
 
 export default ShowForm
+
+// handledelete
+// remove from shows results
+// add to database (Post)
