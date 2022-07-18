@@ -11,11 +11,20 @@ import { baseUrl } from './Global'
 const App = () => {
   const [ shows, setShows ] = useState([]);
 
-  useEffect(() => {
-    const fetchSavedShows = () => {fetch(baseUrl + '/shows')
+  const dateObj = new Date();
+  const weekday = dateObj.toLocaleString("default", { weekday: "long" })
+
+  //fetch requests
+  const fetchSavedShows = () => {
+    fetch(baseUrl + '/shows')
     .then(response => response.json())
     .then(data => setShows(data))
-    }
+
+  console.log('Today is:', weekday)
+  }
+  
+  
+  useEffect(() => {
     fetchSavedShows();
   }, [])
   
