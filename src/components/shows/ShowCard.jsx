@@ -1,6 +1,29 @@
 import React from 'react'
 import { useState } from 'react'
 
+import Chip from '@mui/material/Chip';
+import Grid from '@mui/material/Grid';
+
+import TimerIcon from '@mui/icons-material/Timer';
+import DvrIcon from '@mui/icons-material/Dvr';
+import TheatersIcon from '@mui/icons-material/Theaters';
+import StarsIcon from '@mui/icons-material/Stars';
+
+import Divider from '@mui/material/Divider';
+import Paper from '@mui/material/Paper';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import Button from '@mui/material/Button';
+import AddIcon from '@mui/icons-material/Add';
+import Stack from '@mui/material/Stack';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
+
+
 import { useTheme } from '@mui/material/styles';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
@@ -12,6 +35,9 @@ import ImageListItem from '@mui/material/ImageListItem';
 import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import InfoIcon from '@mui/icons-material/Info';
+
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
 
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -41,6 +67,15 @@ const ExpandMore = styled((props) => {
     }),
   }));
 
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: '##eeeeee',
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  }));
+
 const ShowCard = ({ show, saveShow, unsaveShow }) => {
   const [ save, setSave ] = useState(false)
   const [ day, setDay ] = useState('wednesday')
@@ -64,69 +99,93 @@ const ShowCard = ({ show, saveShow, unsaveShow }) => {
   }
     
   return (
-    <Card sx={{ display: 'flex', width: '100%' }}>
+    <Grid item sx={{ width: '100%' }}>
+    <Card sx={{ display: 'flex', width: '100%'}}>
         <CardMedia
         component="img"
-        sx={{ width: 151, }}
+        sx={{ width: 151 }}
         image={show.poster}
-        alt="Live from space album cover"
+        alt={show.title}
       />
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
-          <Typography component="div" variant="h5">
-            {show.title}
-          </Typography>
-          <Typography variant="subtitle1" color="text.secondary" component="div">
-            Available for Streaming on Hulu
-          </Typography>
+        <CardHeader
+            action={
+                <ExpandMore
+                    expand={expanded}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                >
+                    <ExpandMoreIcon />
+                </ExpandMore>
+            }
+        title={show.title}
+        subheader={`Available for Streaming on ${show.streaming}`} 
+      />
         </CardContent>
-        <CardActions disableSpacing>
-       <IconButton aria-label="add to favorites">
-         <FavoriteIcon />
-       </IconButton>
-       <IconButton aria-label="share">
-         <ShareIcon />
-       </IconButton>
-      <ExpandMore
-        expand={expanded}
-        onClick={handleExpandClick}
-        aria-expanded={expanded}
-        aria-label="show more"
-      >
-        <ExpandMoreIcon />
-      </ExpandMore>
-    </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
-            aside for 10 minutes.
+        <Typography variant="overline" display="block" gutterBottom>
+                DETAILS
+            </Typography>
+        <Stack
+        sx={{ m: 1, width: '100%' }}
+        direction="row"
+        divider={<Divider orientation="vertical" flexItem />}
+        spacing={3}
+      >
+        <Badge badgeContent={`${show.runtime}` } color="primary">
+            <Item><TimerIcon /> RUNTIME (in minutes)</Item>
+        </Badge>
+        <Badge badgeContent={`${show.episodes}` } color="primary">
+            <Item><TheatersIcon /> EPISODE(S)</Item>
+        </Badge>
+        <Badge badgeContent={`${show.seasons}` } color="primary">
+            <Item>
+                <DvrIcon/> SEASONS
+            </Item>
+        </Badge>
+        <Badge badgeContent={`${show.rating}%` } color="primary">
+            <Item><StarsIcon />RATINGS</Item>
+        </Badge>
+        
+      </Stack><br />
+          <Typography variant="overline" display="block" gutterBottom>
+                Overview
+            </Typography>
+          <Typography variant="body2" gutterBottom>
+            {show.overview}
           </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over
-            medium-high heat. Add chicken, shrimp and chorizo, and cook, stirring
-            occasionally until lightly browned, 6 to 8 minutes. Transfer shrimp to a
-            large plate and set aside, leaving chicken and chorizo in the pan. Add
-            pimentón, bay leaves, garlic, tomatoes, onion, salt and pepper, and cook,
-            stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and
-            peppers, and cook without stirring, until most of the liquid is absorbed,
-            15 to 18 minutes. Reduce heat to medium-low, add reserved shrimp and
-            mussels, tucking them down into the rice, and cook again without
-            stirring, until mussels have opened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don&apos;t open.)
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
+          <br />
+          <Button variant="contained" href={'https://youtu.be/' + `${show.video}`} sx={{ m: 1, width: '100%' }} target="blank" color="success" startIcon={<PlayCircleIcon />}>Watch Preview</Button>
         </CardContent>
       </Collapse>
+        
+        <CardActions disableSpacing sx={{ flex: '1 0 auto' }}>
+                    <FormControl fullWidth sx={{ m: 1 }}>
+  <InputLabel id="day">Add to Your Watchlist...</InputLabel>
+  <Select
+    labelId="day"
+    id="day"
+    value={day}
+    label="Add to Your Watchlist..."
+    onChange={e => setDay( e.target.value )}
+  >
+    <MenuItem value="monday">Monday</MenuItem>
+    <MenuItem value="tuesday">Tuesday</MenuItem>
+    <MenuItem value="wednesday">Wednesday</MenuItem>
+    <MenuItem value="thursday">Thursday</MenuItem>
+    <MenuItem value="friday">Friday</MenuItem>
+    <MenuItem value="saturday">Saturday</MenuItem>
+    <MenuItem value="sunday">Sunday</MenuItem>
+  </Select>
+</FormControl>
+<Button size="small" variant="contained" startIcon={<AddCircleIcon />}> Save Show</Button>
+          </CardActions>
       </Box>
     </Card>
+    </Grid>
   )
 }
 

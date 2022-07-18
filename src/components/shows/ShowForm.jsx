@@ -1,6 +1,38 @@
 import React from 'react'
 import { useState } from 'react'
 import ShowCard from './ShowCard';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+
+
+
+import NativeSelect from '@mui/material/NativeSelect';
+
+
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
+import InfoIcon from '@mui/icons-material/Info';
+import TextField from '@mui/material/TextField';
+
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
+
+import Button from '@mui/material/Button';
+
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
+
+import { capitalizeFirstLowercaseRest } from '../../Global';
 
 const ShowForm = ({ saveShow, unsaveShow }) => {
     const [ show, setShow ] = useState('');
@@ -44,7 +76,7 @@ const ShowForm = ({ saveShow, unsaveShow }) => {
                     "episodes": result.episodes,
                     "poster": result.posterURLs.original,
                     "overview": result.overview,
-                    "streaming": platform,
+                    "streaming": capitalizeFirstLowercaseRest(platform),
                     "rating": result.tmdbRating,
                     "video": result.video,
                 }
@@ -56,33 +88,48 @@ const ShowForm = ({ saveShow, unsaveShow }) => {
   
     return (
     <div>
+        <Container>
         <h1>ShowForm</h1>
-        
         <form>
-            <div>
-                <label htmlFor="showInput">Enter Show</label>
-                <input type="text" id="show" name="show" value={ show } onChange={ e => setShow( e.target.value ) }  />
-                <label htmlFor="platform">Select a platform</label>
-                    <select name="platform" id="platform"  value={ platform } onChange={ e => setPlatform( e.target.value ) }>
-                    <option value="netflix">Netflix</option>
-                    <option value="hulu">Hulu</option>
-                    <option value="prime">Prime</option>
-                    <option value="paramount">Paramount</option>
-                    <option value="disney">Disney</option>
-                    </select>
-            </div>
-            
-            <input type="button" value="Search Your Favorite Show" onClick={handleSearch} />
+        <FormControl fullWidth sx={{ width: '100%', mt: 1, mr: 1 }}>
+            <TextField 
+                fullWidth
+                variant="filled"
+                id="show" 
+                name="show"
+                label={'Search for your favorite show'}
+                value={ show }
+                onChange={ e => setShow( e.target.value ) } />
+        </FormControl>
+        <FormControl fullWidth variant="filled" sx={{ width: '100%',  mt: 1, mr: 1 }}>
+            <InputLabel id="streaminglatform">Streaming Platform</InputLabel>
+        <Select
+          labelId="streaminglatform"
+          id="streaminglatform"
+          value={ platform }
+          onChange={ e => setPlatform( e.target.value ) }
+        >
+          <MenuItem value='netflix'>Netflix</MenuItem>
+          <MenuItem value='hulu'>Hulu</MenuItem>
+          <MenuItem value='disney'>Disney</MenuItem>
+          <MenuItem value='hbo'>HBO Max</MenuItem>
+          <MenuItem value='prime'>Prime</MenuItem>
+          <MenuItem value='paramount'>Paramount</MenuItem>
+        </Select>
+      </FormControl>
+            <Button variant="contained" onClick={handleSearch} sx={{ mt: 1, mr: 1, width: '100%' }}>Search</Button>
         </form>
-        <div>
-            <ul>
+        </Container>
+        <Container>
+            <h1>Show Results</h1>
+            <Grid container direction="row" rowSpacing={{ xs: 1, sm: 1, md: 2 }} sx={{ width: '100%' }}>
                 { outputs.map((output, index) => {
                     return (
                             <ShowCard show={output} key={index} saveShow={saveShow} unsaveShow={unsaveShow} />
                     )
                 })}
-            </ul>
-        </div>
+            </Grid>
+        </Container>     
     </div>
   )
 }
