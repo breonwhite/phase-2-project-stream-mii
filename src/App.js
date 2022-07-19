@@ -10,6 +10,7 @@ import { baseUrl } from './Global'
 
 const App = () => {
   const [ shows, setShows ] = useState([]);
+  
 
   const dateObj = new Date();
   const weekday = dateObj.toLocaleString("default", { weekday: "long" })
@@ -23,7 +24,7 @@ const App = () => {
   console.log('Today is:', weekday)
   }
   
-  
+  //useEffects
   useEffect(() => {
     fetchSavedShows();
   }, [])
@@ -59,10 +60,10 @@ const App = () => {
 
   return (
     <Router>
-      <Navbar />
+      <Navbar shows={shows}/>
       <Routes>
         <Route path="/shows/new" element={<ShowForm saveShow={saveShow} unsaveShow={unsaveShow}  />} />
-        <Route path="/shows" element={<ShowList />} />
+        <Route path="/shows" element={<ShowList shows={shows} day={weekday} />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
