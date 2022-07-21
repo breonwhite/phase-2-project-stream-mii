@@ -10,7 +10,6 @@ import { baseUrl } from './Global'
 
 const App = () => {
   const [ shows, setShows ] = useState([]);
-  
 
   const dateObj = new Date();
   const weekday = dateObj.toLocaleString("default", { weekday: "long" })

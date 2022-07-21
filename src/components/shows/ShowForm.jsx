@@ -2,44 +2,20 @@ import React from 'react'
 import { useState } from 'react'
 import ShowCard from './ShowCard';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
-
-
-import NativeSelect from '@mui/material/NativeSelect';
-
-
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import IconButton from '@mui/material/IconButton';
-import InfoIcon from '@mui/icons-material/Info';
 import TextField from '@mui/material/TextField';
-
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
-import Avatar from '@mui/material/Avatar';
-import Stack from '@mui/material/Stack';
-
 import Button from '@mui/material/Button';
-
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-
-
 import { capitalizeFirstLowercaseRest } from '../../Global';
 
 const ShowForm = ({ saveShow }) => {
     const [ show, setShow ] = useState('');
     const [ platform, setPlatform ] = useState('');
     const [ outputs, setOutput ] = useState([]);
-
-    
+    const [ searching, setSearching ] = useState(false);
     
     async function fetchShows() {
         const customURL = ('https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=' 
@@ -61,7 +37,8 @@ const ShowForm = ({ saveShow }) => {
 
     const handleSearch = e => {
         e.preventDefault();
-        console.log(show, platform)
+        console.log(show, platform);
+        setSearching(true);
         
         fetchShows().then(data => {
             const results = data.results;
@@ -118,7 +95,7 @@ const ShowForm = ({ saveShow }) => {
         </form>
         </Container>
         <Container>
-            <h1>Show Results</h1>
+        { searching? <h1>Available Shows</h1> : "" }
             <Grid container direction="row" rowSpacing={{ xs: 1, sm: 1, md: 2 }} sx={{ width: '100%' }}>
                 { outputs.map((output, index) => {
                     return (
@@ -132,7 +109,3 @@ const ShowForm = ({ saveShow }) => {
 }
 
 export default ShowForm
-
-// handledelete
-// remove from shows results
-// add to database (Post)

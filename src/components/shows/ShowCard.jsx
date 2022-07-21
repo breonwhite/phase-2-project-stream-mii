@@ -1,44 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
-
-import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid';
-
 import TimerIcon from '@mui/icons-material/Timer';
 import DvrIcon from '@mui/icons-material/Dvr';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import StarsIcon from '@mui/icons-material/Stars';
-
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
-import AddIcon from '@mui/icons-material/Add';
 import Stack from '@mui/material/Stack';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-
-
-
-import { useTheme } from '@mui/material/styles';
-import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import SkipNextIcon from '@mui/icons-material/SkipNext';
-import MenuOpenIcon from '@mui/icons-material/MenuOpen';
-
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import ListSubheader from '@mui/material/ListSubheader';
-import InfoIcon from '@mui/icons-material/Info';
-
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
-
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -46,14 +24,9 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Box from '@mui/material/Box';
 
 const ExpandMore = styled((props) => {
@@ -79,9 +52,6 @@ const ExpandMore = styled((props) => {
 const ShowCard = ({ show, saveShow, unsaveShow }) => {
   const [ save, setSave ] = useState(false)
   const [ day, setDay ] = useState('wednesday')
-
-  const theme = useTheme();
-
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -91,11 +61,6 @@ const ShowCard = ({ show, saveShow, unsaveShow }) => {
   const handleSave = () => {
     saveShow(show, day)
     setSave(true)
-  }
-
-  const handleUnsave = () => {
-    unsaveShow(show, day)
-    setSave(false)
   }
     
   return (
@@ -181,7 +146,7 @@ const ShowCard = ({ show, saveShow, unsaveShow }) => {
     <MenuItem value="sunday">Sunday</MenuItem>
   </Select>
 </FormControl>
-<Button size="small" variant="contained" onClick={handleSave} startIcon={<AddCircleIcon />}> Save Show</Button>
+{ save? <Button color="success" size="small" variant="contained" startIcon={<CheckCircleIcon />} disabled> Show Saved!</Button> : <Button size="small" variant="contained" onClick={handleSave} startIcon={<AddCircleIcon />}> Save Show</Button>}
           </CardActions>
       </Box>
     </Card>

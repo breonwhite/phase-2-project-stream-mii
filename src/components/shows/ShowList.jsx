@@ -3,58 +3,21 @@ import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import MobileStepper from '@mui/material/MobileStepper';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
-import Modal from '@mui/material/Modal';
-import Typography from '@mui/material/Typography';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import ShowListItem from './ShowListItem';
 import LineupCard from './LineupCard';
-
 import SwipeableViews from 'react-swipeable-views';
 import { autoPlay } from 'react-swipeable-views-utils';
-
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 
-import { Button, CardActionArea, CardActions, ListItem, ListItemButton } from '@mui/material';
-
-const images = [
-    {
-      label: 'San Francisco – Oakland Bay Bridge, United States',
-      imgPath:
-        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
-    },
-    {
-      label: 'Bird',
-      imgPath:
-        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
-    },
-    {
-      label: 'Bali, Indonesia',
-      imgPath:
-        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
-    },
-    {
-      label: 'Goč, Serbia',
-      imgPath:
-        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-    },
-  ];
-
-
-
-
-const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 const ShowList = ({ shows, day, unsaveShow }) => {
     const [ value, setValue ] = useState('allshows');
@@ -71,10 +34,6 @@ const ShowList = ({ shows, day, unsaveShow }) => {
 
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-    
-    const handleStepChange = (step) => {
-        setActiveStep(step);
     };
 
     const handleChange = (event, newValue) => {
@@ -114,7 +73,7 @@ const ShowList = ({ shows, day, unsaveShow }) => {
                         lineup.map((shw, index) => (
                             Math.abs(activeStep - index) <= 0 ? (
                                 <LineupCard key={shw.id} show={shw} />
-                            ) :null
+                            ) : null
                         ))
                     }
                 </Grid>
@@ -127,7 +86,7 @@ const ShowList = ({ shows, day, unsaveShow }) => {
             <Button
                 size="small"
                 onClick={handleNext}
-                disabled={activeStep === maxSteps - 1}
+                disabled={activeStep === maxSteps - 1 || maxSteps === 0}
             >
             Next
                 {theme.direction === 'rtl' ? (
@@ -138,7 +97,7 @@ const ShowList = ({ shows, day, unsaveShow }) => {
             </Button>
              }
             backButton={
-            <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+            <Button size="small" onClick={handleBack} disabled={activeStep === 0 || maxSteps === 0 }>
                 {theme.direction === 'rtl' ? (
                 <KeyboardArrowRight />
                 ) : (
@@ -151,7 +110,7 @@ const ShowList = ({ shows, day, unsaveShow }) => {
         </Container>
         <Container>
             <h2>Your Shows</h2>
-            <Container>
+            <Container position="static">
             <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                         <TabList onChange={handleChange} sx={{ maxWidth: '100%' }} aria-label="lab API tabs example">
@@ -170,9 +129,10 @@ const ShowList = ({ shows, day, unsaveShow }) => {
                             { weeklyShows(value).map((item) => (
                                 <div key={item.id}>
                                 <ShowListItem show={item} unsaveShow={unsaveShow} />
+                                <Divider />
                                 </div>
-                            ))}
-                            <Divider />
+                            ))  
+                            }
                         </List>
                     </TabPanel>
                 </TabContext>
@@ -186,36 +146,3 @@ const ShowList = ({ shows, day, unsaveShow }) => {
 }
 
 export default ShowList
-
-
-{/* <TabContext value={value}>
-                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label="All Shows" value="allshows" />
-                            <Tab label="Sunday" value="sunday" />
-                            <Tab label="Monday" value="monday" />
-                            <Tab label="Tuesday" value="tuesday" />
-                            <Tab label="Wednesday" value="wednesday" />
-                            <Tab label="Thursday" value="thursday" />
-                            <Tab label="Friday" value="friday" />
-                            <Tab label="Saturday" value="saturday" />
-                        </TabList>
-                    </Box>
-                    <TabPanel value={value}>
-                        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                            { WeekdayShows(value).map((item) => (
-                                <ListItem
-                                    button
-                                    key={item.id}
-                                    onClick={(e) => {
-                                        setOpen(true);
-                                        setDetails(item.title)
-                                    }}
-                                >
-                                    <WeeklyShows show={item} />
-                                </ListItem>
-                            ))
-                            }
-                        </List>
-                    </TabPanel>
-                </TabContext> */}

@@ -1,30 +1,3 @@
 {
-  "shows": [
-    {
-      "title": "RuPaul's Drag Race",
-      "runtime": 43,
-      "seasons": 15,
-      "episodes": 192,
-      "poster": "https://image.tmdb.org/t/p/original/oXJ1fGDAIE7NVLlrjktKWzfvlrg.jpg",
-      "overview": "Join RuPaul, the world's most famous drag queen, as the host, mentor and judge for the ultimate in drag queen competitions. The top drag queens in the U.S. will vie for drag stardom as RuPaul, in full glamazon drag, will reign supreme in all judging and eliminations while helping guide the contestants as they prepare for each challenge.",
-      "streaming": "paramount",
-      "rating": 78,
-      "video": "",
-      "weekday": "wednesday",
-      "id": 1
-    },
-    {
-      "title": "RuPaul's Drag Race All Stars: Untucked!",
-      "runtime": 21,
-      "seasons": 4,
-      "episodes": 38,
-      "poster": "https://image.tmdb.org/t/p/original/wD5jrlVbZ08ydZbmWG9X52sofP1.jpg",
-      "overview": "Untucked: All Stars is the access-all-areas pass to the drama that you didn't see on the runway. See what happens behind the scenes when the queens let their tucks breathe... and let their emotions flow.",
-      "streaming": "paramount",
-      "rating": 64,
-      "video": "",
-      "weekday": "wednesday",
-      "id": 2
-    }
-  ]
+  "shows": []
 }
