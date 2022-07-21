@@ -34,7 +34,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import { capitalizeFirstLowercaseRest } from '../../Global';
 
-const ShowForm = ({ saveShow, unsaveShow }) => {
+const ShowForm = ({ saveShow }) => {
     const [ show, setShow ] = useState('');
     const [ platform, setPlatform ] = useState('');
     const [ outputs, setOutput ] = useState([]);
@@ -59,9 +59,6 @@ const ShowForm = ({ saveShow, unsaveShow }) => {
         return shows
     }
 
-    
-    
-    
     const handleSearch = e => {
         e.preventDefault();
         console.log(show, platform)
@@ -125,7 +122,7 @@ const ShowForm = ({ saveShow, unsaveShow }) => {
             <Grid container direction="row" rowSpacing={{ xs: 1, sm: 1, md: 2 }} sx={{ width: '100%' }}>
                 { outputs.map((output, index) => {
                     return (
-                            <ShowCard show={output} key={index} saveShow={saveShow} unsaveShow={unsaveShow} />
+                            <ShowCard show={output} key={index} saveShow={saveShow} />
                     )
                 })}
             </Grid>

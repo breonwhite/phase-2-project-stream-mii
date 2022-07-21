@@ -32,7 +32,7 @@ import Box from '@mui/material/Box';
 import { Button, CardActionArea, CardActions, ListItem, ListItemButton } from '@mui/material';
 
 
-const ShowList = ({ shows, day }) => {
+const ShowList = ({ shows, day, unsaveShow }) => {
     const [ value, setValue ] = useState('allshows');
 
     const handleChange = (event, newValue) => {
@@ -91,7 +91,7 @@ const ShowList = ({ shows, day }) => {
                         <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                             { weeklyShows(value).map((item) => (
                                 <div key={item.id}>
-                                <ShowListItem show={item} />
+                                <ShowListItem show={item} unsaveShow={unsaveShow} />
                                 </div>
                             ))}
                             <Divider />

@@ -22,13 +22,17 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 
 
-const ShowListItem = ({ show }) => {
+const ShowListItem = ({ show, unsaveShow }) => {
+
+    const handleDelete = () => {
+        unsaveShow(show)
+    }
 
   return (
         <ListItem 
             alignItems="flex-start"
             secondaryAction={
-                <IconButton edge="end" aria-label="delete">
+                <IconButton edge="end" aria-label="delete" onClick={handleDelete}>
                     <DeleteIcon />
                 </IconButton>
             }>

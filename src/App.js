@@ -48,14 +48,22 @@ const App = () => {
     })
       .then(resp => resp.json())
       .then(data => {
-        setShows([...shows, show])
+        setShows([...shows, data])
         fetchSavedShows();
       })
   }
 
-  const unsaveShow = (show, day) => {
+  const unsaveShow = (show) => {
     console.log('unsaving', show)
-    console.log('remove from day of week', day)
+    fetch(baseUrl + '/shows/' + show.id, {
+      method: "DELETE",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(resp => resp.json())
+      .then(data => setShows(shows.filter(shw => shw.id !== show.id)))
   }
 
 
@@ -63,8 +71,8 @@ const App = () => {
     <Router>
       <Navbar shows={shows}/>
       <Routes>
-        <Route path="/shows/new" element={<ShowForm saveShow={saveShow} unsaveShow={unsaveShow}  />} />
-        <Route path="/shows" element={<ShowList shows={shows} day={weekday} />} />
+        <Route path="/shows/new" element={<ShowForm saveShow={saveShow}  />} />
+        <Route path="/shows" element={<ShowList shows={shows} day={weekday} unsaveShow={unsaveShow} />} />
         <Route path="/" element={<Home shows={shows}/>} />
       </Routes>
     </Router>
