@@ -181,7 +181,7 @@ const ShowCard = ({ show, saveShow, unsaveShow }) => {
     <MenuItem value="sunday">Sunday</MenuItem>
   </Select>
 </FormControl>
-<Button size="small" variant="contained" startIcon={<AddCircleIcon />}> Save Show</Button>
+<Button size="small" variant="contained" onClick={handleSave} startIcon={<AddCircleIcon />}> Save Show</Button>
           </CardActions>
       </Box>
     </Card>

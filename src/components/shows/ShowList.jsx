@@ -17,6 +17,7 @@ import Tabs from '@mui/material/Tabs';
 import TabPanel from '@mui/lab/TabPanel';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
+import ShowListItem from './ShowListItem';
 
 
 
@@ -38,6 +39,21 @@ const ShowList = ({ shows, day }) => {
         event.preventDefault();
         setValue(newValue);
       };
+
+    const weeklyShows = ( weekday ) => {
+        let weekshows = [];
+        
+        if (weekday == 'allshows') {
+            weekshows = shows.map(show => (
+                show
+            ))
+        }
+        else {
+            weekshows = shows.filter(show => (
+            show.weekday == weekday))
+        }
+        return weekshows;
+    }
 
 
   return (
@@ -73,7 +89,12 @@ const ShowList = ({ shows, day }) => {
                     </Box>
                     <TabPanel value={value}>
                         <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                            
+                            { weeklyShows(value).map((item) => (
+                                <div key={item.id}>
+                                <ShowListItem show={item} />
+                                </div>
+                            ))}
+                            <Divider />
                         </List>
                     </TabPanel>
                 </TabContext>

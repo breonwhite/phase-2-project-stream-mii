@@ -19,7 +19,7 @@ const App = () => {
   const fetchSavedShows = () => {
     fetch(baseUrl + '/shows')
     .then(response => response.json())
-    .then(data => setShows(data))
+    .then(data => setShows([...data]))
 
   console.log('Today is:', weekday)
   }
@@ -49,6 +49,7 @@ const App = () => {
       .then(resp => resp.json())
       .then(data => {
         setShows([...shows, show])
+        fetchSavedShows();
       })
   }
 
@@ -64,7 +65,7 @@ const App = () => {
       <Routes>
         <Route path="/shows/new" element={<ShowForm saveShow={saveShow} unsaveShow={unsaveShow}  />} />
         <Route path="/shows" element={<ShowList shows={shows} day={weekday} />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home shows={shows}/>} />
       </Routes>
     </Router>
   )
