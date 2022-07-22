@@ -1,3 +1,133 @@
 {
-  "shows": []
+  "shows": [
+    {
+      "title": "RuPaul's Drag Race",
+      "runtime": 43,
+      "seasons": 15,
+      "episodes": 192,
+      "poster": "https://image.tmdb.org/t/p/original/oXJ1fGDAIE7NVLlrjktKWzfvlrg.jpg",
+      "overview": "Join RuPaul, the world's most famous drag queen, as the host, mentor and judge for the ultimate in drag queen competitions. The top drag queens in the U.S. will vie for drag stardom as RuPaul, in full glamazon drag, will reign supreme in all judging and eliminations while helping guide the contestants as they prepare for each challenge.",
+      "streaming": "Paramount",
+      "rating": 78,
+      "video": "",
+      "weekday": "monday",
+      "id": 1
+    },
+    {
+      "title": "The Real Housewives of Beverly Hills",
+      "runtime": 43,
+      "seasons": 12,
+      "episodes": 255,
+      "poster": "https://image.tmdb.org/t/p/original/nBtHqGLmcK7AXMqg5xzYC2k3kGe.jpg",
+      "overview": "A reality series that follows some of the most affluent women in the country as they enjoy the lavish lifestyle that only Beverly Hills can provide.",
+      "streaming": "Hulu",
+      "rating": 69,
+      "video": "d0NCzZ9q2kg",
+      "weekday": "friday",
+      "id": 5
+    },
+    {
+      "title": "The Real Housewives of New Jersey",
+      "runtime": 43,
+      "seasons": 12,
+      "episodes": 218,
+      "poster": "https://image.tmdb.org/t/p/original/n3ZNgp7IpQOUXoGoV8svZccZeoP.jpg",
+      "overview": "We head to the Garden State for this installment of the “Housewives” franchise, focusing on affluent Jersey girls who are more than just friends. The cast has changed through the seasons but the featured housewives through the years have included Caroline Manzo, a devoted wife and mother of three adult children; former Las Vegas cosmetologist Jacqueline Laurita, who is now a full-time housewife; and Teresa Giudice, a mother of four who runs her household without help from a nanny or personal assistant.",
+      "streaming": "Hulu",
+      "rating": 67,
+      "video": "",
+      "weekday": "saturday",
+      "id": 6
+    },
+    {
+      "title": "The Real Housewives of Potomac",
+      "runtime": 42,
+      "seasons": 7,
+      "episodes": 113,
+      "poster": "https://image.tmdb.org/t/p/original/dnw16Rp5wss3wCQOfFVjmP4tgzz.jpg",
+      "overview": "Just up the river from our nation’s capital lies a hidden gem—Potomac, Maryland. Its rolling hills, gated mansions, sophisticated prep schools, and exclusive country clubs all serve to keep the area invitation-only. Sprinkled throughout this community are a handful of old-line, wealthy African-American families who have historically broken racial barriers to provide a life of privilege for their children. In a town where entry is granted only through class, pedigree, and lineage, how far will the ladies go to secure their spot at the top of this prestigious circle?",
+      "streaming": "Hulu",
+      "rating": 59,
+      "video": "",
+      "weekday": "sunday",
+      "id": 7
+    },
+    {
+      "title": "The Real Housewives of Salt Lake City",
+      "runtime": 55,
+      "seasons": 2,
+      "episodes": 40,
+      "poster": "https://image.tmdb.org/t/p/original/dCeBHRqLFdbmt8vDVhhAK4BI6Qb.jpg",
+      "overview": "Fueled by multi-million-dollar businesses and brands, a hidden social circle of successful women have created their own paradise in the majestic mountains of Utah.",
+      "streaming": "Hulu",
+      "rating": 52,
+      "video": "KBuTPKvV6Vc",
+      "weekday": "monday",
+      "id": 8
+    },
+    {
+      "title": "Legendary",
+      "runtime": 49,
+      "seasons": 3,
+      "episodes": 29,
+      "poster": "https://image.tmdb.org/t/p/original/4ZIPELWwcKnR6cG11a6mbn7lc4J.jpg",
+      "overview": "Pulling directly from the underground ballroom community, voguing teams (aka \"houses\") must compete in unbelievable balls and showcase sickening fashion in order to achieve \"legendary\" status.",
+      "streaming": "Hbo",
+      "rating": 71,
+      "video": "tXYwR5gDb34",
+      "weekday": "friday",
+      "id": 9
+    },
+    {
+      "title": "Harley Quinn",
+      "runtime": 23,
+      "seasons": 3,
+      "episodes": 36,
+      "poster": "https://image.tmdb.org/t/p/original/sefSAj6FqEdmXQ7CRfvuEhcHwGl.jpg",
+      "overview": "Harley Quinn has finally broken things off once and for all with the Joker and attempts to make it on her own as the criminal Queenpin of Gotham City.",
+      "streaming": "Hbo",
+      "rating": 84,
+      "video": "LFZhq7y_hfg",
+      "weekday": "wednesday",
+      "id": 10
+    },
+    {
+      "title": "Shark Tank",
+      "runtime": 42,
+      "seasons": 13,
+      "episodes": 295,
+      "poster": "https://image.tmdb.org/t/p/original/AcNfFFhKGYUtUpsUx67yxv5scmG.jpg",
+      "overview": "Aspiring entrepreneurs pitch various business ideas to \"The Sharks\" -- tough, self-made, multi-millionaire and billionaire tycoons -- in hopes of landing an investment.",
+      "streaming": "Hulu",
+      "rating": 68,
+      "video": "",
+      "weekday": "friday",
+      "id": 12
+    },
+    {
+      "title": "Marvel's Hit-Monkey",
+      "runtime": 25,
+      "seasons": 1,
+      "episodes": 10,
+      "poster": "https://image.tmdb.org/t/p/original/1aK7hApRSDUv8xxDQXyQil7qBjN.jpg",
+      "overview": "A Japanese snow macaque's clan meets a stranded hitman, Bryce, and nurses him back to health. But when Bryce bites the dust, it's up to the titular simian (guided by Bryce's ghost) to follow in his assassin footsteps and seek vengeance.",
+      "streaming": "Hulu",
+      "rating": 79,
+      "video": "gb72HBB1QbA",
+      "weekday": "monday",
+      "id": 13
+    },
+    {
+      "title": "Baking Impossible",
+      "seasons": 1,
+      "episodes": 8,
+      "poster": "https://image.tmdb.org/t/p/original/mNewdaTcWBtoVY4a4e0PgcjNShu.jpg",
+      "overview": "Top bakers and engineers team up to build edible creations that must taste delicious and survive intense engineering stress tests to win $100,000.",
+      "streaming": "Netflix",
+      "rating": 63,
+      "video": "Dn5UhUMCSz0",
+      "weekday": "friday",
+      "id": 14
+    }
+  ]
 }
