@@ -35,8 +35,9 @@ const ShowForm = ({ saveShow }) => {
         return shows
     }
 
-    const handleSearch = e => {
-        e.preventDefault();
+    const handleSearch = (event) => {
+        event.preventDefault();
+        setOutput([]);
         console.log(show, platform);
         setSearching(true);
         
@@ -64,7 +65,7 @@ const ShowForm = ({ saveShow }) => {
     <div>
         <Container>
         <h1>ShowForm</h1>
-        <form>
+        <form onSubmit={handleSearch}>
         <FormControl fullWidth sx={{ width: '100%', mt: 1, mr: 1 }}>
             <TextField 
                 fullWidth
@@ -91,7 +92,7 @@ const ShowForm = ({ saveShow }) => {
           <MenuItem value='paramount'>Paramount</MenuItem>
         </Select>
       </FormControl>
-            <Button variant="contained" onClick={handleSearch} sx={{ mt: 1, mr: 1, width: '100%' }}>Search</Button>
+            <Button variant="contained" type="submit" sx={{ mt: 1, mr: 1, width: '100%' }}>Search</Button>
         </form>
         </Container>
         <Container>
