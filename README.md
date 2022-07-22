@@ -6,7 +6,7 @@ Search for favorite show across streaming platforms to create your own personali
 
 Stream-Mii allows users to search for their favorite series across multiple streaming platforms. Users can save and remove shows from their Weekly Show List.
 
-![Alt text](images/stream-mii.gif)
+![Alt text](public/images/stream-mii.gif)
 
 ---
 ### __FEATURES__
